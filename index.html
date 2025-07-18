@@ -181,6 +181,121 @@
             letter-spacing: 1px;
         }
 
+        /* Data Explorer */
+        .data-explorer {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .explorer-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .control-group select, .control-group input {
+            padding: 0.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .control-group select:focus, .control-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            min-height: 400px;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .country-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .country-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .country-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .country-stat {
+            text-align: center;
+        }
+
+        .country-stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .country-stat-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .digital-divide-indicator {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .divide-level {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .divide-low { background: #28a745; }
+        .divide-medium { background: #ffc107; }
+        .divide-high { background: #dc3545; }
+
         /* Interactive Map */
         .map-section {
             background: #f8f9fa;
@@ -203,10 +318,38 @@
             margin-bottom: 3rem;
         }
 
-        .continent-grid {
+        .map-container {
+            position: relative;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 15px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        .continent-summary {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .continent-card {
@@ -253,62 +396,44 @@
             color: #666;
         }
 
-        .trend-indicator {
-            display: flex;
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
             align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding: 0.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
         }
 
-        .trend-arrow {
-            font-size: 1.2rem;
-        }
-
-        .trend-up { color: #28a745; }
-        .trend-down { color: #dc3545; }
-
-        /* Features Section */
-        .features {
-            padding: 4rem 0;
+        .modal-content {
             background: white;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            padding: 2rem;
             border-radius: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            transition: transform 0.3s;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
         }
 
-        .feature-card:hover {
-            transform: scale(1.05);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            cursor: pointer;
+            color: #666;
         }
 
-        .feature-description {
-            opacity: 0.9;
+        .modal-close:hover {
+            color: #333;
         }
 
         /* Footer */
@@ -337,7 +462,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .continent-grid {
+            .explorer-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .country-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -351,10 +481,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#data-explorer">Data Explorer</a></li>
                 <li><a href="#continents">Continents</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#stories">Stories</a></li>
-                <li><a href="#action">Take Action</a></li>
+                <li><a href="#insights">Insights</a></li>
             </ul>
         </nav>
     </header>
@@ -362,8 +491,8 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Connected Continents</h1>
-            <p>How the world logs on, connects, and grows online</p>
-            <a href="#global-stats" class="cta-button">Start Exploring</a>
+            <p>Explore real data on how the world connects, grows, and thrives online</p>
+            <a href="#global-stats" class="cta-button">Explore the Data</a>
         </div>
     </section>
 
@@ -372,20 +501,75 @@
             <h2 class="section-title">Global Digital Landscape</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">5.16B</div>
-                    <div class="stat-label">Internet Users Worldwide</div>
+                    <div class="stat-number" id="total-countries">190</div>
+                    <div class="stat-label">Countries Analyzed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">64.4%</div>
-                    <div class="stat-label">Global Internet Penetration</div>
+                    <div class="stat-number" id="avg-penetration">45.2%</div>
+                    <div class="stat-label">Average Internet Penetration</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">4.88B</div>
-                    <div class="stat-label">Social Media Users</div>
+                    <div class="stat-number" id="highest-penetration">95.6%</div>
+                    <div class="stat-label">Highest Penetration Rate</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">5.44B</div>
-                    <div class="stat-label">Mobile Phone Users</div>
+                    <div class="stat-number" id="countries-above-50">67</div>
+                    <div class="stat-label">Countries Above 50%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="data-explorer" id="data-explorer">
+        <div class="container">
+            <h2 class="section-title">Interactive Data Explorer</h2>
+            
+            <div class="explorer-controls">
+                <div class="control-group">
+                    <label for="continent-filter">Filter by Continent:</label>
+                    <select id="continent-filter">
+                        <option value="all">All Continents</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="income-filter">Filter by Income Level:</label>
+                    <select id="income-filter">
+                        <option value="all">All Income Levels</option>
+                        <option value="low">Low Income (< $2,000)</option>
+                        <option value="medium">Medium Income ($2,000 - $10,000)</option>
+                        <option value="high">High Income (> $10,000)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="penetration-filter">Min Internet Penetration:</label>
+                    <input type="range" id="penetration-filter" min="0" max="100" value="0">
+                    <span id="penetration-value">0%</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="internetuserate">Internet Penetration</option>
+                        <option value="incomeperperson">Income per Person</option>
+                        <option value="urbanrate">Urban Rate</option>
+                        <option value="country">Country Name</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Countries Meeting Your Criteria</h3>
+                <div id="filtered-count">Loading...</div>
+                <div class="country-grid" id="country-grid">
+                    <!-- Countries will be populated here -->
                 </div>
             </div>
         </div>
@@ -393,268 +577,117 @@
 
     <section class="map-section" id="continents">
         <div class="container">
-            <h2 class="section-title">Explore by Continent</h2>
+            <h2 class="section-title">Continental Overview</h2>
             
             <div class="world-map">
-                <div style="text-align: center; padding: 3rem; background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 15px;">
-                    <h3 style="color: #1976d2; margin-bottom: 1rem;">🗺️ Interactive World Map</h3>
-                    <p style="color: #666;">Click on any continent below to explore detailed statistics and trends</p>
+                <div class="map-container">
+                    <h3 style="color: #1976d2; margin-bottom: 1rem; text-align: center;">🗺️ Internet Penetration by Continent</h3>
+                    <p style="color: #666; text-align: center; margin-bottom: 2rem;">Based on real data from 190 countries worldwide</p>
+                    
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #2e7d32;"></div>
+                            <span>80%+ Internet Penetration</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #388e3c;"></div>
+                            <span>60-79% Internet Penetration</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #66bb6a;"></div>
+                            <span>40-59% Internet Penetration</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #a5d6a7;"></div>
+                            <span>20-39% Internet Penetration</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #c8e6c9;"></div>
+                            <span>0-19% Internet Penetration</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="continent-grid">
-                <div class="continent-card" onclick="showContinentDetails('Asia')">
-                    <div class="continent-name">🌏 Asia</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">67.1%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">2.8B</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow trend-up">↗️</span>
-                        <span>Mobile-first adoption leading growth</span>
-                    </div>
-                </div>
-
-                <div class="continent-card" onclick="showContinentDetails('Africa')">
-                    <div class="continent-name">🌍 Africa</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">43.1%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">600M</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow trend-up">🚀</span>
-                        <span>Fastest growing region (+13% YoY)</span>
-                    </div>
-                </div>
-
-                <div class="continent-card" onclick="showContinentDetails('Europe')">
-                    <div class="continent-name">🌍 Europe</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">87.7%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">750M</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow">🔒</span>
-                        <span>Leading in privacy & data protection</span>
-                    </div>
-                </div>
-
-                <div class="continent-card" onclick="showContinentDetails('North America')">
-                    <div class="continent-name">🌎 North America</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">91.8%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">380M</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow">📱</span>
-                        <span>High broadband & 5G adoption</span>
-                    </div>
-                </div>
-
-                <div class="continent-card" onclick="showContinentDetails('South America')">
-                    <div class="continent-name">🌎 South America</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">75.8%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">320M</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow trend-up">🎵</span>
-                        <span>Social media & streaming growth</span>
-                    </div>
-                </div>
-
-                <div class="continent-card" onclick="showContinentDetails('Oceania')">
-                    <div class="continent-name">🌏 Oceania</div>
-                    <div class="continent-stats">
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">68.9%</div>
-                            <div class="continent-stat-label">Internet Penetration</div>
-                        </div>
-                        <div class="continent-stat">
-                            <div class="continent-stat-value">30M</div>
-                            <div class="continent-stat-label">Users</div>
-                        </div>
-                    </div>
-                    <div class="trend-indicator">
-                        <span class="trend-arrow">🏝️</span>
-                        <span>Remote connectivity innovations</span>
-                    </div>
-                </div>
+            <div class="continent-summary" id="continent-summary">
+                <!-- Continent cards will be populated here -->
             </div>
         </div>
     </section>
 
-    <section class="features" id="dashboard">
-        <div class="container">
-            <h2 class="section-title">Explore Digital Divides</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-title">Digital Divide Dashboard</div>
-                    <div class="feature-description">Interactive tools to compare internet access across regions, income levels, and demographics</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <div class="feature-title">Success Stories</div>
-                    <div class="feature-description">Real stories of how internet access is transforming lives and communities worldwide</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <div class="feature-title">Take Action</div>
-                    <div class="feature-description">Connect with organizations working to bridge the digital divide and expand global access</div>
-                </div>
+    <!-- Modal for detailed country info -->
+    <div id="country-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body">
+                <!-- Modal content will be populated here -->
             </div>
         </div>
-    </section>
+    </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Connected Continents. Bridging the digital divide through data and action.</p>
+            <p>&copy; 2024 Connected Continents. Data-driven insights into global digital connectivity.</p>
         </div>
     </footer>
 
     <script>
-        function showContinentDetails(continent) {
-            const details = {
-                'Asia': {
-                    penetration: '67.1%',
-                    users: '2.8B',
-                    trend: 'Mobile-first adoption with China and India leading growth',
-                    activities: ['Social Media', 'E-commerce', 'Gaming', 'Education'],
-                    challenges: ['Rural connectivity', 'Internet censorship', 'Digital literacy']
-                },
-                'Africa': {
-                    penetration: '43.1%',
-                    users: '600M',
-                    trend: 'Fastest growing region with mobile money innovations',
-                    activities: ['Mobile Banking', 'Social Media', 'News', 'Music Streaming'],
-                    challenges: ['Infrastructure', 'Cost of access', 'Power reliability']
-                },
-                'Europe': {
-                    penetration: '87.7%',
-                    users: '750M',
-                    trend: 'Leading in privacy regulations and digital rights',
-                    activities: ['E-commerce', 'Streaming', 'News', 'Professional Networks'],
-                    challenges: ['Digital skills gap', 'Platform regulation', 'Rural coverage']
-                },
-                'North America': {
-                    penetration: '91.8%',
-                    users: '380M',
-                    trend: 'High broadband adoption with 5G expansion',
-                    activities: ['Streaming', 'Social Media', 'Remote Work', 'E-commerce'],
-                    challenges: ['Digital divide', 'Privacy concerns', 'Misinformation']
-                },
-                'South America': {
-                    penetration: '75.8%',
-                    users: '320M',
-                    trend: 'Growing social media and streaming consumption',
-                    activities: ['Social Media', 'Streaming', 'Messaging', 'Gaming'],
-                    challenges: ['Infrastructure', 'Economic access', 'Content censorship']
-                },
-                'Oceania': {
-                    penetration: '68.9%',
-                    users: '30M',
-                    trend: 'Innovation in remote connectivity solutions',
-                    activities: ['Social Media', 'E-commerce', 'News', 'Government Services'],
-                    challenges: ['Geographic isolation', 'Cost', 'Rural connectivity']
-                }
-            };
-
-            const info = details[continent];
-            if (info) {
-                alert(`${continent} Internet Overview:\n\n` +
-                      `📊 Internet Penetration: ${info.penetration}\n` +
-                      `👥 Total Users: ${info.users}\n` +
-                      `📈 Key Trend: ${info.trend}\n\n` +
-                      `🎯 Top Activities: ${info.activities.join(', ')}\n\n` +
-                      `⚠️ Challenges: ${info.challenges.join(', ')}`);
-            }
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Animate stats on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.stat-card, .continent-card, .feature-card').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-</body>
-</html>
+        // Sample data (in real implementation, this would come from the CSV)
+        const countries = [
+            {country: "Afghanistan", incomeperperson: null, internetuserate: 3.65, urbanrate: 24.04, continent: "Asia"},
+            {country: "Albania", incomeperperson: 1914.99, internetuserate: 44.99, urbanrate: 46.72, continent: "Europe"},
+            {country: "Algeria", incomeperperson: 2231.99, internetuserate: 12.50, urbanrate: 65.22, continent: "Africa"},
+            {country: "Andorra", incomeperperson: 21943.34, internetuserate: 81.00, urbanrate: 88.92, continent: "Europe"},
+            {country: "Angola", incomeperperson: 1381.00, internetuserate: 10.00, urbanrate: 56.70, continent: "Africa"},
+            {country: "Argentina", incomeperperson: 10749.42, internetuserate: 36.00, urbanrate: 92.00, continent: "South America"},
+            {country: "Armenia", incomeperperson: 1326.74, internetuserate: 44.00, urbanrate: 63.86, continent: "Asia"},
+            {country: "Australia", incomeperperson: 25249.99, internetuserate: 75.90, urbanrate: 88.74, continent: "Oceania"},
+            {country: "Austria", incomeperperson: 26692.98, internetuserate: 72.73, urbanrate: 67.16, continent: "Europe"},
+            {country: "Azerbaijan", incomeperperson: 2344.90, internetuserate: 46.68, urbanrate: 51.92, continent: "Asia"},
+            {country: "Bahrain", incomeperperson: 12505.21, internetuserate: 55.00, urbanrate: 88.52, continent: "Asia"},
+            {country: "Bangladesh", incomeperperson: 558.06, internetuserate: 3.70, urbanrate: 27.14, continent: "Asia"},
+            {country: "Belgium", incomeperperson: 24496.05, internetuserate: 73.73, urbanrate: 97.36, continent: "Europe"},
+            {country: "Benin", incomeperperson: 377.04, internetuserate: 3.13, urbanrate: 41.20, continent: "Africa"},
+            {country: "Bhutan", incomeperperson: 1324.19, internetuserate: 13.60, urbanrate: 34.48, continent: "Asia"},
+            {country: "Bolivia", incomeperperson: 1232.79, internetuserate: 20.00, urbanrate: 65.58, continent: "South America"},
+            {country: "Botswana", incomeperperson: 4189.44, internetuserate: 6.00, urbanrate: 59.58, continent: "Africa"},
+            {country: "Brazil", incomeperperson: 4699.41, internetuserate: 40.65, urbanrate: 85.58, continent: "South America"},
+            {country: "Brunei", incomeperperson: 17092.46, internetuserate: 49.99, urbanrate: 74.82, continent: "Asia"},
+            {country: "Bulgaria", incomeperperson: 2549.56, internetuserate: 45.99, urbanrate: 71.10, continent: "Europe"},
+            {country: "Burkina Faso", incomeperperson: 276.20, internetuserate: 1.40, urbanrate: 19.56, continent: "Africa"},
+            {country: "Burundi", incomeperperson: 115.31, internetuserate: 2.10, urbanrate: 10.40, continent: "Africa"},
+            {country: "Cambodia", incomeperperson: 557.95, internetuserate: 1.26, urbanrate: 21.56, continent: "Asia"},
+            {country: "Cameroon", incomeperperson: 713.64, internetuserate: 4.00, urbanrate: 56.76, continent: "Africa"},
+            {country: "Canada", incomeperperson: 25575.35, internetuserate: 81.34, urbanrate: 80.40, continent: "North America"},
+            {country: "Cape Verde", incomeperperson: 1959.84, internetuserate: 30.00, urbanrate: 59.62, continent: "Africa"},
+            {country: "Chad", incomeperperson: 275.88, internetuserate: 1.70, urbanrate: 26.68, continent: "Africa"},
+            {country: "Chile", incomeperperson: 6334.11, internetuserate: 45.00, urbanrate: 88.44, continent: "South America"},
+            {country: "China", incomeperperson: 2425.47, internetuserate: 34.38, urbanrate: 43.10, continent: "Asia"},
+            {country: "Colombia", incomeperperson: 3233.42, internetuserate: 36.50, urbanrate: 74.50, continent: "South America"},
+            {country: "Costa Rica", incomeperperson: 5188.90, internetuserate: 36.50, urbanrate: 63.26, continent: "North America"},
+            {country: "Croatia", incomeperperson: 6338.49, internetuserate: 60.12, urbanrate: 57.28, continent: "Europe"},
+            {country: "Cuba", incomeperperson: 4495.05, internetuserate: 15.90, urbanrate: 75.66, continent: "North America"},
+            {country: "Cyprus", incomeperperson: 15313.86, internetuserate: 53.02, urbanrate: 69.90, continent: "Europe"},
+            {country: "Czech Republic", incomeperperson: 7381.31, internetuserate: 68.64, urbanrate: 73.50, continent: "Europe"},
+            {country: "Denmark", incomeperperson: 30532.28, internetuserate: 88.77, urbanrate: 86.68, continent: "Europe"},
+            {country: "Dominican Republic", incomeperperson: 4049.17, internetuserate: 39.53, urbanrate: 69.02, continent: "North America"},
+            {country: "Ecuador", incomeperperson: 1728.02, internetuserate: 29.00, urbanrate: 65.58, continent: "South America"},
+            {country: "Egypt", incomeperperson: 1975.55, internetuserate: 26.74, urbanrate: 42.72, continent: "Africa"},
+            {country: "El Salvador", incomeperperson: 2557.43, internetuserate: 15.90, urbanrate: 60.70, continent: "North America"},
+            {country: "Estonia", incomeperperson: 6238.54, internetuserate: 74.16, urbanrate: 69.46, continent: "Europe"},
+            {country: "Ethiopia", incomeperperson: 220.89, internetuserate: 0.75, urbanrate: 17.00, continent: "Africa"},
+            {country: "Finland", incomeperperson: 27110.73, internetuserate: 86.90, urbanrate: 63.30, continent: "Europe"},
+            {country: "France", incomeperperson: 22878.47, internetuserate: 77.50, urbanrate: 77.36, continent: "Europe"},
+            {country: "Gabon", incomeperperson: 4180.77, internetuserate: 7.23, urbanrate: 85.04, continent: "Africa"},
+            {country: "Gambia", incomeperperson: 354.60, internetuserate: 9.20, urbanrate: 56.42, continent: "Africa"},
+            {country: "Georgia", incomeperperson: 1258.76, internetuserate: 26.30, urbanrate: 52.74, continent: "Asia"},
+            {country: "Germany", incomeperperson: 25306.19, internetuserate: 82.53, urbanrate: 73.64, continent: "Europe"},
+            {country: "Ghana", incomeperperson: 358.98, internetuserate: 9.55, urbanrate: 50.02, continent: "Africa"},
+            {country: "Greece", incomeperperson: 13577.88, internetuserate: 44.57, urbanrate: 61.00, continent: "Europe"},
+            {country: "Guatemala", incomeperperson: 1860.75, internetuserate: 10.50, urbanrate: 48.58, continent: "North America"},
+            {country: "Haiti", incomeperperson: 371.42, internetuserate: 8.37, urbanrate: 46.84, continent: "North America"},
+            {country: "Honduras", incomeperperson: 1392.41, internetuserate: 11.09, urbanrate: 47.88, continent: "North America"},
+            {country: "Hungary", incomeperperson: 5634.00, internetuserate: 65.16, urbanrate: 67.50, continent: "Europe"},
+            {country: "Iceland", incomeperperson: 33945.31, internetuserate: 95.64, urbanrate: 92.26, continent: "Europe"},
+            {country: "India", incomeperperson: 786.70, internetuserate: 7.50, urbanrate: 29.54, continent: "Asia"},
+            {country: "Indonesia", incomeperperson: 1143.83
